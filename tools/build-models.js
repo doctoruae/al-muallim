@@ -7,7 +7,7 @@ const builtins = ['AMAZON.HelpIntent', 'AMAZON.StopIntent', 'AMAZON.CancelIntent
   .map((name) => ({ name, samples: [] }));
 
 const ar = {
-  invocationName: 'المعلم',
+  invocationName: 'المعلم الذكي',
   intents: [
     Q('AskWhyIntent', ['ليش', 'لماذا', 'ليه', 'شحقه']),
     Q('AskWhatIntent', ['شو', 'شنو', 'ايش', 'ما هو', 'ما هي', 'ماذا', 'شو يعني', 'ما معنى', 'شو هو', 'شو هي']),

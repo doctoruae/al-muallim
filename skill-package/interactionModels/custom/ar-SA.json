@@ -1,7 +1,7 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "المعلم",
+      "invocationName": "المعلم الذكي",
       "intents": [
         {
           "name": "AskWhyIntent",

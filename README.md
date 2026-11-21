@@ -43,7 +43,7 @@ Anthropic API key (console.anthropic.com).
 7. In `config.js`, paste your Anthropic API key. → **Deploy**.
 8. **Test** tab → set testing to **Development**. Type or say
    `افتح المعلم`, then `ليش السما زرقا`.
-9. On the Echo Show: "أليكسا، افتح المعلم" (device in Arabic) or
+9. On the Echo Show: "أليكسا، افتح المعلم الذكي" (device in Arabic) or
    "Alexa, open al muallim" (device in English).
 
 The skill stays in development mode: it works on devices registered to your
@@ -89,7 +89,7 @@ To regenerate the models after editing phrases: `node tools/build-models.js`.
 
 ## About the name
 
-The Arabic invocation is the single word **المعلم** ("أليكسا، افتح المعلم").
+The Arabic invocation is the single word **المعلم** ("أليكسا، افتح المعلم الذكي").
 Alexa normally expects two-word invocation names. If the console shows an
 invocation-name error when you build the Arabic model, change
 `invocationName` in `ar-SA.json` to **المعلم الذكي** and build again. The

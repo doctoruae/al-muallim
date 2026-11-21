@@ -8,7 +8,7 @@
           "summary": "معلم ذكي للأطفال بالعربية والإنجليزية",
           "description": "المعلم معلم ذكي يجيب عن أسئلة الأطفال بطريقة مبسطة، بالصوت وعلى الشاشة.",
           "examplePhrases": [
-            "أليكسا، افتح المعلم",
+            "أليكسا، افتح المعلم الذكي",
             "ليش السما زرقا",
             "اختبرني في العلوم"
           ],
@@ -88,7 +88,10 @@
           ]
         }
       },
-      "isAvailableWorldwide": true,
+      "isAvailableWorldwide": false,
+      "distributionCountries": [
+        "AE"
+      ],
       "category": "EDUCATION_AND_REFERENCE",
       "testingInstructions": "Private family skill; not for publication."
     },
