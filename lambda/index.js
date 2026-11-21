@@ -66,11 +66,14 @@ const escapeXml = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').
 const forVoice = (s) => String(s || '')
   .replace(/[\u{1F000}-\u{1FAFF}\u{2190}-\u{21FF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\u{FE0F}\u{200D}]/gu, ' ')
   .replace(/[*_#`~|]/g, ' ').replace(/\s+/g, ' ').trim();
-function ssml(text, lang) {
+function ssml(text, lang, grade) {
   let out = escapeXml(forVoice(text));
+  // a little slower for the youngest children (pre-KG to grade 1)
+  const rate = grade !== undefined && grade <= 1 ? cfg.youngSpeechRate : cfg.speechRate;
   if (lang === 'ar' && cfg.englishVoiceInsideArabic) {
     out = out.replace(/[A-Za-z][A-Za-z' -]*[A-Za-z]/g, (m) => `<lang xml:lang="en-US">${m}</lang>`);
   }
+  if (rate && rate !== '100%') out = `<prosody rate="${rate}">${out}</prosody>`;
   return out;
 }
 function slotId(hi, name) {
@@ -85,10 +88,10 @@ function slotId(hi, name) {
   return null;
 }
 function reply(hi, c, { speech, reprompt, directive, end }) {
-  const rb = hi.responseBuilder.speak(ssml(speech, c.lang));
+  const rb = hi.responseBuilder.speak(ssml(speech, c.lang, c.grade));
   if (directive && hasScreen(hi)) rb.addDirective(directive);
   if (end) rb.withShouldEndSession(true);
-  else rb.reprompt(ssml(reprompt || c.t.reprompt, c.lang));
+  else rb.reprompt(ssml(reprompt || c.t.reprompt, c.lang, c.grade));
   return rb.getResponse();
 }
 // Say "let me think" straight away while the tutor model is working.

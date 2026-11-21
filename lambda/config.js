@@ -41,6 +41,10 @@ module.exports = {
   // Example: 'Follow the UAE Ministry of Education curriculum. Encourage reading.'
   parentNotes: 'The children attend schools following the UAE Ministry of Education curriculum.',
 
+  // Speaking speed: '100%' = normal. The youngest (pre-KG to grade 1) get a slower pace.
+  speechRate: '100%',
+  youngSpeechRate: '90%',
+
   showEmoji: true,        // big picture-emoji on the lesson card
   llmTimeoutMs: 6500,     // give up before Alexa's own 8 s limit
   maxTokens: 500,

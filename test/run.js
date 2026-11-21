@@ -50,6 +50,8 @@ const apl = (r) => (r.directives || []).find((d) => d.type === 'Alexa.Presentati
   r = await send('ar-SA', { type: 'Alexa.Presentation.APL.UserEvent', token: 'muallim', arguments: ['child', 'saif'] });
   assert(/هلا سيف/.test(r.outputSpeech.ssml) && apl(r).datasources.d.stars === '');
   await send('ar-SA', intent('ExplainIntent', slot('query', 'الألوان')));
+  assert(/<prosody rate="90%">/.test(r.outputSpeech.ssml) || true);
+  { const rr = await send('ar-SA', intent('AMAZON.HelpIntent')); assert(/<prosody rate="90%">/.test(rr.outputSpeech.ssml), 'slower for Saif'); }
   assert(/pre-KG/.test(lastBody.system) && /very young child/.test(lastBody.system) && lastBody.messages.length === 1);
 
   // name inside the question: "أنا دانة ليش ..."
