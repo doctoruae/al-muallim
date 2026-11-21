@@ -277,6 +277,130 @@
           ]
         },
         {
+          "name": "NameIntent",
+          "slots": [
+            {
+              "name": "child",
+              "type": "CHILD"
+            }
+          ],
+          "samples": [
+            "أنا {child}",
+            "{child}",
+            "اسمي {child}",
+            "أنا اسمي {child}",
+            "معاك {child}",
+            "هذا {child}",
+            "هذي {child}",
+            "أنا هني {child}"
+          ]
+        },
+        {
+          "name": "ChildAsk_mayed",
+          "slots": [
+            {
+              "name": "query",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "أنا مايد {query}",
+            "اسمي مايد {query}",
+            "معاك مايد {query}",
+            "مايد {query}"
+          ]
+        },
+        {
+          "name": "ChildAsk_mahra",
+          "slots": [
+            {
+              "name": "query",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "أنا مهرة {query}",
+            "اسمي مهرة {query}",
+            "معاك مهرة {query}",
+            "مهرة {query}"
+          ]
+        },
+        {
+          "name": "ChildAsk_khalifa",
+          "slots": [
+            {
+              "name": "query",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "أنا خليفة {query}",
+            "اسمي خليفة {query}",
+            "معاك خليفة {query}",
+            "خليفة {query}"
+          ]
+        },
+        {
+          "name": "ChildAsk_dana",
+          "slots": [
+            {
+              "name": "query",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "أنا دانة {query}",
+            "اسمي دانة {query}",
+            "معاك دانة {query}",
+            "دانة {query}"
+          ]
+        },
+        {
+          "name": "ChildAsk_mansour",
+          "slots": [
+            {
+              "name": "query",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "أنا منصور {query}",
+            "اسمي منصور {query}",
+            "معاك منصور {query}",
+            "منصور {query}"
+          ]
+        },
+        {
+          "name": "ChildAsk_zayed",
+          "slots": [
+            {
+              "name": "query",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "أنا زايد {query}",
+            "اسمي زايد {query}",
+            "معاك زايد {query}",
+            "زايد {query}"
+          ]
+        },
+        {
+          "name": "ChildAsk_saif",
+          "slots": [
+            {
+              "name": "query",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "أنا سيف {query}",
+            "اسمي سيف {query}",
+            "معاك سيف {query}",
+            "سيف {query}"
+          ]
+        },
+        {
           "name": "AMAZON.HelpIntent",
           "samples": []
         },
@@ -302,6 +426,72 @@
         }
       ],
       "types": [
+        {
+          "name": "CHILD",
+          "values": [
+            {
+              "id": "mayed",
+              "name": {
+                "value": "مايد",
+                "synonyms": [
+                  "ميد",
+                  "مايض"
+                ]
+              }
+            },
+            {
+              "id": "mahra",
+              "name": {
+                "value": "مهرة",
+                "synonyms": [
+                  "مهره"
+                ]
+              }
+            },
+            {
+              "id": "khalifa",
+              "name": {
+                "value": "خليفة",
+                "synonyms": [
+                  "خليفه"
+                ]
+              }
+            },
+            {
+              "id": "dana",
+              "name": {
+                "value": "دانة",
+                "synonyms": [
+                  "دانه"
+                ]
+              }
+            },
+            {
+              "id": "mansour",
+              "name": {
+                "value": "منصور",
+                "synonyms": []
+              }
+            },
+            {
+              "id": "zayed",
+              "name": {
+                "value": "زايد",
+                "synonyms": [
+                  "زائد",
+                  "زيد"
+                ]
+              }
+            },
+            {
+              "id": "saif",
+              "name": {
+                "value": "سيف",
+                "synonyms": []
+              }
+            }
+          ]
+        },
         {
           "name": "SUBJECT",
           "values": [
@@ -460,10 +650,12 @@
             {
               "id": "0",
               "name": {
-                "value": "الروضة",
+                "value": "الروضة الثانية",
                 "synonyms": [
-                  "روضة",
-                  "التمهيدي"
+                  "كي جي تو",
+                  "كي جي اثنين",
+                  "التمهيدي",
+                  "روضة"
                 ]
               }
             },
@@ -583,6 +775,27 @@
                 "value": "الثاني عشر",
                 "synonyms": [
                   "اثنا عشر"
+                ]
+              }
+            },
+            {
+              "id": "-2",
+              "name": {
+                "value": "ما قبل الروضة",
+                "synonyms": [
+                  "بري كي جي",
+                  "الحضانة"
+                ]
+              }
+            },
+            {
+              "id": "-1",
+              "name": {
+                "value": "الروضة الأولى",
+                "synonyms": [
+                  "كي جي ون",
+                  "كي جي واحد",
+                  "الروضة"
                 ]
               }
             }

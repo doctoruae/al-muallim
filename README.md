@@ -49,6 +49,27 @@ Anthropic API key (console.anthropic.com).
 The skill stays in development mode: it works on devices registered to your
 account and is never published to the store.
 
+## The children
+
+When it opens, المعلم asks "منو معاي اليوم؟" and shows each child's name as a
+button. A child answers "أنا مهرة" (or touches their name), or puts the name
+in the first question: "أنا دانة، ليش السما زرقا؟". المعلم then uses that
+child's name, gender and level, follows that level's curriculum outline
+(`lambda/curriculum.js`, UAE Ministry of Education), and counts that child's
+stars. A sibling takes over by saying "أنا سيف". Names, grades and genders
+are in `children` in `lambda/config.js`; after changing names, run
+`node tools/build-models.js` and paste the new model JSON in the console.
+
+## The API key
+
+The key lives in its own file, `lambda/apikey.js` (create it in the console's
+Code tab), containing one line:
+
+    module.exports = 'sk-ant-...';
+
+Keeping it separate means updating the other files never wipes the key. The
+file is excluded from GitHub.
+
 ## Customising (all in `lambda/config.js`)
 
 - `assistantName` – the tutor's name. (To change the phrase that opens the

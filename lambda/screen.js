@@ -1,6 +1,6 @@
 // Builds the Echo Show screen (APL). One document, two modes: lesson card / quiz.
 const C = { bg: '#0F1E36', card: '#1C3357', accent: '#FFD166', text: '#FFFFFF', soft: '#B9C7DD' };
-const OPTION_COLORS = ['#2A9D8F', '#E76F51', '#5C7CFA'];
+const OPTION_COLORS = ['#2A9D8F', '#E76F51', '#5C7CFA', '#F4A261', '#9B5DE5', '#00A6A6', '#EF476F'];
 
 const document = {
   type: 'APL',
@@ -44,16 +44,17 @@ const document = {
                     item: { type: 'Text', text: '${data}', color: C.text, fontSize: '36dp' }
                   }]
                 },
-                { // quiz options (touchable)
-                  type: 'Container', when: "${payload.d.mode == 'quiz'}", width: '100%',
+                { // touchable choices: quiz answers or children's names
+                  type: 'Container', when: "${payload.d.mode == 'choices'}", width: '100%',
+                  direction: 'row', wrap: 'wrap',
                   data: '${payload.d.options}',
                   items: [{
-                    type: 'TouchWrapper', width: '100%', spacing: '14dp',
-                    onPress: [{ type: 'SendEvent', arguments: ['answer', '${ordinal}'] }],
+                    type: 'TouchWrapper', width: '${payload.d.wide ? \'100%\' : \'31%\'}', spacing: '14dp', paddingEnd: '12dp',
+                    onPress: [{ type: 'SendEvent', arguments: ['${data.event}', '${data.value}'] }],
                     item: {
                       type: 'Frame', width: '100%', backgroundColor: '${data.color}', borderRadius: '18dp',
-                      paddingLeft: '28dp', paddingRight: '28dp', paddingTop: '18dp', paddingBottom: '18dp',
-                      item: { type: 'Text', text: '${ordinal}.  ${data.text}', color: C.text, fontSize: '38dp', fontWeight: 'bold' }
+                      paddingLeft: '24dp', paddingRight: '24dp', paddingTop: '18dp', paddingBottom: '18dp',
+                      item: { type: 'Text', text: '${data.label}', color: C.text, fontSize: '38dp', fontWeight: 'bold', textAlign: '${payload.d.wide ? \'auto\' : \'center\'}' }
                     }
                   }]
                 }
@@ -79,13 +80,21 @@ function base(lang, name, stars) {
 }
 function lesson({ lang, name, stars, title, emoji, points, hint }) {
   return directive(Object.assign(base(lang, name, stars), {
-    mode: 'lesson', title: title || '', emoji: emoji || '', points: points || [], options: [], hint: hint || ''
+    mode: 'lesson', wide: true, title: title || '', emoji: emoji || '', points: points || [], options: [], hint: hint || ''
   }));
 }
 function quiz({ lang, name, stars, question, emoji, options, hint }) {
   return directive(Object.assign(base(lang, name, stars), {
-    mode: 'quiz', title: question || '', emoji: emoji || '', points: [],
-    options: options.map((text, i) => ({ text, color: OPTION_COLORS[i % 3] })), hint: hint || ''
+    mode: 'choices', wide: true, title: question || '', emoji: emoji || '', points: [],
+    options: options.map((text, i) => ({ label: `${i + 1}.  ${text}`, event: 'answer', value: String(i + 1), color: OPTION_COLORS[i % 3] })),
+    hint: hint || ''
   }));
 }
-module.exports = { lesson, quiz, document };
+function kids({ lang, name, title, children, hint }) {
+  return directive(Object.assign(base(lang, name, 0), {
+    mode: 'choices', wide: false, title, emoji: '👋', points: [],
+    options: children.map((c, i) => ({ label: lang === 'ar' ? c.ar : c.en, event: 'child', value: c.id, color: OPTION_COLORS[i % OPTION_COLORS.length] })),
+    hint: hint || ''
+  }));
+}
+module.exports = { lesson, quiz, kids, document };

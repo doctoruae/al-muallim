@@ -275,6 +275,136 @@
           ]
         },
         {
+          "name": "NameIntent",
+          "slots": [
+            {
+              "name": "child",
+              "type": "CHILD"
+            }
+          ],
+          "samples": [
+            "i am {child}",
+            "i'm {child}",
+            "{child}",
+            "my name is {child}",
+            "this is {child}",
+            "it is {child}",
+            "it's {child}"
+          ]
+        },
+        {
+          "name": "ChildAsk_mayed",
+          "slots": [
+            {
+              "name": "query",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "i am mayed {query}",
+            "i'm mayed {query}",
+            "this is mayed {query}",
+            "it is mayed {query}",
+            "mayed here {query}"
+          ]
+        },
+        {
+          "name": "ChildAsk_mahra",
+          "slots": [
+            {
+              "name": "query",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "i am mahra {query}",
+            "i'm mahra {query}",
+            "this is mahra {query}",
+            "it is mahra {query}",
+            "mahra here {query}"
+          ]
+        },
+        {
+          "name": "ChildAsk_khalifa",
+          "slots": [
+            {
+              "name": "query",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "i am khalifa {query}",
+            "i'm khalifa {query}",
+            "this is khalifa {query}",
+            "it is khalifa {query}",
+            "khalifa here {query}"
+          ]
+        },
+        {
+          "name": "ChildAsk_dana",
+          "slots": [
+            {
+              "name": "query",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "i am dana {query}",
+            "i'm dana {query}",
+            "this is dana {query}",
+            "it is dana {query}",
+            "dana here {query}"
+          ]
+        },
+        {
+          "name": "ChildAsk_mansour",
+          "slots": [
+            {
+              "name": "query",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "i am mansour {query}",
+            "i'm mansour {query}",
+            "this is mansour {query}",
+            "it is mansour {query}",
+            "mansour here {query}"
+          ]
+        },
+        {
+          "name": "ChildAsk_zayed",
+          "slots": [
+            {
+              "name": "query",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "i am zayed {query}",
+            "i'm zayed {query}",
+            "this is zayed {query}",
+            "it is zayed {query}",
+            "zayed here {query}"
+          ]
+        },
+        {
+          "name": "ChildAsk_saif",
+          "slots": [
+            {
+              "name": "query",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "i am saif {query}",
+            "i'm saif {query}",
+            "this is saif {query}",
+            "it is saif {query}",
+            "saif here {query}"
+          ]
+        },
+        {
           "name": "AMAZON.HelpIntent",
           "samples": []
         },
@@ -300,6 +430,84 @@
         }
       ],
       "types": [
+        {
+          "name": "CHILD",
+          "values": [
+            {
+              "id": "mayed",
+              "name": {
+                "value": "mayed",
+                "synonyms": [
+                  "maid",
+                  "mayid",
+                  "my ed"
+                ]
+              }
+            },
+            {
+              "id": "mahra",
+              "name": {
+                "value": "mahra",
+                "synonyms": [
+                  "mehra",
+                  "mahara",
+                  "mara"
+                ]
+              }
+            },
+            {
+              "id": "khalifa",
+              "name": {
+                "value": "khalifa",
+                "synonyms": [
+                  "kalifa",
+                  "khaleefa"
+                ]
+              }
+            },
+            {
+              "id": "dana",
+              "name": {
+                "value": "dana",
+                "synonyms": [
+                  "donna",
+                  "dena"
+                ]
+              }
+            },
+            {
+              "id": "mansour",
+              "name": {
+                "value": "mansour",
+                "synonyms": [
+                  "mansoor",
+                  "mansur"
+                ]
+              }
+            },
+            {
+              "id": "zayed",
+              "name": {
+                "value": "zayed",
+                "synonyms": [
+                  "zaid",
+                  "zayid",
+                  "zayd"
+                ]
+              }
+            },
+            {
+              "id": "saif",
+              "name": {
+                "value": "saif",
+                "synonyms": [
+                  "sayf",
+                  "saeef"
+                ]
+              }
+            }
+          ]
+        },
         {
           "name": "SUBJECT",
           "values": [
@@ -448,10 +656,10 @@
             {
               "id": "0",
               "name": {
-                "value": "kindergarten",
+                "value": "k. g. two",
                 "synonyms": [
-                  "k. g.",
-                  "nursery"
+                  "kindergarten two",
+                  "kindergarten"
                 ]
               }
             },
@@ -560,6 +768,26 @@
                 "value": "twelve",
                 "synonyms": [
                   "twelfth"
+                ]
+              }
+            },
+            {
+              "id": "-2",
+              "name": {
+                "value": "pre k. g.",
+                "synonyms": [
+                  "pre kindergarten",
+                  "nursery"
+                ]
+              }
+            },
+            {
+              "id": "-1",
+              "name": {
+                "value": "k. g. one",
+                "synonyms": [
+                  "kindergarten one",
+                  "k. g."
                 ]
               }
             }

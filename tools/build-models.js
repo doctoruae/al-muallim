@@ -1,5 +1,18 @@
 // Generates the voice models + manifest. Run: node tools/build-models.js
 const fs = require('fs'); const path = require('path');
+const KIDS = require('../lambda/config').children || [];
+// extra spellings speech recognition may produce
+const AR_SYN = { 'مايد': ['ميد', 'مايض'], 'مهرة': ['مهره'], 'خليفة': ['خليفه'], 'دانة': ['دانه'], 'منصور': [], 'زايد': ['زائد', 'زيد'], 'سيف': [] };
+const EN_SYN = { Mayed: ['maid', 'mayid', 'my ed'], Mahra: ['mehra', 'mahara', 'mara'], Khalifa: ['kalifa', 'khaleefa'], Dana: ['donna', 'dena'], Mansour: ['mansoor', 'mansur'], Zayed: ['zaid', 'zayid', 'zayd'], Saif: ['sayf', 'saeef'] };
+const childType = (lang) => ({ name: 'CHILD', values: KIDS.map((k) => ({ id: k.id, name: { value: lang === 'ar' ? k.ar : k.en.toLowerCase(), synonyms: lang === 'ar' ? (AR_SYN[k.ar] || []) : (EN_SYN[k.en] || []) } })) });
+const nameIntent = (samples) => ({ name: 'NameIntent', slots: [{ name: 'child', type: 'CHILD' }], samples });
+const childAsk = (lang) => KIDS.map((k) => {
+  const names = lang === 'ar' ? [k.ar] : [k.en.toLowerCase()];
+  const carriers = lang === 'ar' ? ['أنا {n}', 'اسمي {n}', 'معاك {n}', '{n}'] : ['i am {n}', 'i\'m {n}', 'this is {n}', 'it is {n}', '{n} here'];
+  const samples = [];
+  for (const n of names) for (const c of carriers) samples.push(`${c.replace('{n}', n)} {query}`);
+  return { name: `ChildAsk_${k.id}`, slots: [{ name: 'query', type: 'AMAZON.SearchQuery' }], samples };
+});
 const out = path.join(__dirname, '..', 'skill-package');
 const Q = (name, samples) => ({ name, slots: [{ name: 'query', type: 'AMAZON.SearchQuery' }], samples: samples.map((s) => `${s} {query}`) });
 const vals = (obj) => Object.entries(obj).map(([id, [value, ...synonyms]]) => ({ id, name: { value, synonyms } }));
@@ -27,13 +40,16 @@ const ar = {
     { name: 'ExampleIntent', slots: [], samples: ['عطني مثال', 'أعطني مثالاً', 'مثال', 'مثال ثاني'] },
     { name: 'DialectIntent', slots: [{ name: 'style', type: 'STYLE' }], samples: ['تكلم {style}', 'رمس {style}', 'احكي {style}', 'غير اللهجة إلى {style}', 'أبا {style}'] },
     { name: 'GradeIntent', slots: [{ name: 'grade', type: 'GRADE' }], samples: ['أنا في الصف {grade}', 'أنا صف {grade}', 'صفي {grade}', 'أنا في {grade}', 'أدرس في الصف {grade}'] },
+    nameIntent(['أنا {child}', '{child}', 'اسمي {child}', 'أنا اسمي {child}', 'معاك {child}', 'هذا {child}', 'هذي {child}', 'أنا هني {child}']),
+    ...childAsk('ar'),
     ...builtins
   ],
   types: [
+    childType('ar'),
     { name: 'SUBJECT', values: vals({ math: ['الرياضيات', 'رياضيات', 'الحساب', 'الجمع', 'الضرب'], science: ['العلوم', 'علوم'], arabic: ['اللغة العربية', 'العربي', 'عربي'], english: ['اللغة الإنجليزية', 'الإنجليزي', 'انجليزي', 'الانجليزي'], space: ['الفضاء', 'الكواكب'], animals: ['الحيوانات', 'حيوانات'], uae: ['الإمارات', 'تاريخ الإمارات', 'الدراسات الاجتماعية'], general: ['معلومات عامة', 'أي شي'] }) },
     { name: 'OPTION', values: vals({ 1: ['الأول', 'الاول', 'واحد', 'الأولى', 'أول واحد'], 2: ['الثاني', 'اثنين', 'الثانية', 'ثاني واحد'], 3: ['الثالث', 'ثلاثة', 'الثالثة', 'ثالث واحد', 'الأخير'] }) },
     { name: 'STYLE', values: vals({ emirati: ['إماراتي', 'بالإماراتي', 'باللهجة الإماراتية', 'عامية', 'بالعامية'], fusha: ['فصحى', 'بالفصحى', 'باللغة الفصحى', 'بالعربية الفصحى'] }) },
-    { name: 'GRADE', values: vals({ 0: ['الروضة', 'روضة', 'التمهيدي'], 1: ['الأول', 'الاول', 'أول', 'واحد'], 2: ['الثاني', 'ثاني', 'اثنين'], 3: ['الثالث', 'ثالث', 'ثلاثة'], 4: ['الرابع', 'رابع', 'أربعة'], 5: ['الخامس', 'خامس', 'خمسة'], 6: ['السادس', 'سادس', 'ستة'], 7: ['السابع', 'سابع', 'سبعة'], 8: ['الثامن', 'ثامن', 'ثمانية'], 9: ['التاسع', 'تاسع', 'تسعة'], 10: ['العاشر', 'عاشر', 'عشرة'], 11: ['الحادي عشر', 'أحد عشر'], 12: ['الثاني عشر', 'اثنا عشر'] }) }
+    { name: 'GRADE', values: vals({ '-2': ['ما قبل الروضة', 'بري كي جي', 'الحضانة'], '-1': ['الروضة الأولى', 'كي جي ون', 'كي جي واحد', 'الروضة'], 0: ['الروضة الثانية', 'كي جي تو', 'كي جي اثنين', 'التمهيدي', 'روضة'], 1: ['الأول', 'الاول', 'أول', 'واحد'], 2: ['الثاني', 'ثاني', 'اثنين'], 3: ['الثالث', 'ثالث', 'ثلاثة'], 4: ['الرابع', 'رابع', 'أربعة'], 5: ['الخامس', 'خامس', 'خمسة'], 6: ['السادس', 'سادس', 'ستة'], 7: ['السابع', 'سابع', 'سبعة'], 8: ['الثامن', 'ثامن', 'ثمانية'], 9: ['التاسع', 'تاسع', 'تسعة'], 10: ['العاشر', 'عاشر', 'عشرة'], 11: ['الحادي عشر', 'أحد عشر'], 12: ['الثاني عشر', 'اثنا عشر'] }) }
   ]
 };
 
@@ -58,13 +74,16 @@ const en = {
     { name: 'ExampleIntent', slots: [], samples: ['give me an example', 'an example', 'another example', 'show me an example'] },
     { name: 'DialectIntent', slots: [{ name: 'style', type: 'STYLE' }], samples: ['speak {style}', 'use {style} arabic', 'switch to {style}'] },
     { name: 'GradeIntent', slots: [{ name: 'grade', type: 'GRADE' }], samples: ['i am in grade {grade}', 'i\'m in grade {grade}', 'i am in year {grade}', 'i am in {grade} grade', 'i am in {grade}', 'my grade is {grade}'] },
+    nameIntent(['i am {child}', 'i\'m {child}', '{child}', 'my name is {child}', 'this is {child}', 'it is {child}', 'it\'s {child}']),
+    ...childAsk('en'),
     ...builtins
   ],
   types: [
+    childType('en'),
     { name: 'SUBJECT', values: vals({ math: ['math', 'maths', 'mathematics', 'numbers', 'addition', 'multiplication'], science: ['science'], arabic: ['arabic'], english: ['english', 'spelling', 'grammar'], space: ['space', 'planets', 'the planets'], animals: ['animals'], uae: ['the u. a. e.', 'the emirates', 'social studies'], general: ['general knowledge', 'anything'] }) },
     { name: 'OPTION', values: vals({ 1: ['one', 'first', 'the first one', 'number one'], 2: ['two', 'second', 'the second one', 'number two'], 3: ['three', 'third', 'the third one', 'the last one'] }) },
     { name: 'STYLE', values: vals({ emirati: ['emirati', 'emirati dialect', 'local'], fusha: ['formal', 'formal arabic', 'standard', 'classical'] }) },
-    { name: 'GRADE', values: vals({ 0: ['kindergarten', 'k. g.', 'nursery'], 1: ['one', 'first'], 2: ['two', 'second'], 3: ['three', 'third'], 4: ['four', 'fourth'], 5: ['five', 'fifth'], 6: ['six', 'sixth'], 7: ['seven', 'seventh'], 8: ['eight', 'eighth'], 9: ['nine', 'ninth'], 10: ['ten', 'tenth'], 11: ['eleven', 'eleventh'], 12: ['twelve', 'twelfth'] }) }
+    { name: 'GRADE', values: vals({ '-2': ['pre k. g.', 'pre kindergarten', 'nursery'], '-1': ['k. g. one', 'kindergarten one', 'k. g.'], 0: ['k. g. two', 'kindergarten two', 'kindergarten'], 1: ['one', 'first'], 2: ['two', 'second'], 3: ['three', 'third'], 4: ['four', 'fourth'], 5: ['five', 'fifth'], 6: ['six', 'sixth'], 7: ['seven', 'seventh'], 8: ['eight', 'eighth'], 9: ['nine', 'ninth'], 10: ['ten', 'tenth'], 11: ['eleven', 'eleventh'], 12: ['twelve', 'twelfth'] }) }
   ]
 };
 
