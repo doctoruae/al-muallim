@@ -3,8 +3,7 @@
   "profiles": {
     "default": {
       "skillMetadata": { "src": "./skill-package" },
-      "code": { "default": { "src": "./lambda" } },
-      "skillInfrastructure": { "type": "@ask-cli/lambda-deployer", "userConfig": { "runtime": "nodejs18.x", "handler": "index.handler" } }
+      "code": { "default": { "src": "./lambda" } }
     }
   }
 }
