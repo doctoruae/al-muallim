@@ -1,0 +1,112 @@
+{
+  "manifest": {
+    "manifestVersion": "1.0",
+    "publishingInformation": {
+      "locales": {
+        "ar-SA": {
+          "name": "المعلم",
+          "summary": "معلم ذكي للأطفال بالعربية والإنجليزية",
+          "description": "المعلم معلم ذكي يجيب عن أسئلة الأطفال بطريقة مبسطة، بالصوت وعلى الشاشة.",
+          "examplePhrases": [
+            "أليكسا، افتح المعلم",
+            "ليش السما زرقا",
+            "اختبرني في العلوم"
+          ],
+          "keywords": [
+            "تعليم",
+            "أطفال"
+          ]
+        },
+        "en-US": {
+          "name": "Al Muallim",
+          "summary": "A smart tutor for kids in Arabic and English",
+          "description": "Al Muallim answers children's questions simply, by voice and on screen.",
+          "examplePhrases": [
+            "Alexa, open al muallim",
+            "why is the sky blue",
+            "quiz me on science"
+          ],
+          "keywords": [
+            "education",
+            "kids"
+          ]
+        },
+        "en-GB": {
+          "name": "Al Muallim",
+          "summary": "A smart tutor for kids in Arabic and English",
+          "description": "Al Muallim answers children's questions simply, by voice and on screen.",
+          "examplePhrases": [
+            "Alexa, open al muallim",
+            "why is the sky blue",
+            "quiz me on science"
+          ],
+          "keywords": [
+            "education",
+            "kids"
+          ]
+        },
+        "en-IN": {
+          "name": "Al Muallim",
+          "summary": "A smart tutor for kids in Arabic and English",
+          "description": "Al Muallim answers children's questions simply, by voice and on screen.",
+          "examplePhrases": [
+            "Alexa, open al muallim",
+            "why is the sky blue",
+            "quiz me on science"
+          ],
+          "keywords": [
+            "education",
+            "kids"
+          ]
+        },
+        "en-AU": {
+          "name": "Al Muallim",
+          "summary": "A smart tutor for kids in Arabic and English",
+          "description": "Al Muallim answers children's questions simply, by voice and on screen.",
+          "examplePhrases": [
+            "Alexa, open al muallim",
+            "why is the sky blue",
+            "quiz me on science"
+          ],
+          "keywords": [
+            "education",
+            "kids"
+          ]
+        },
+        "en-CA": {
+          "name": "Al Muallim",
+          "summary": "A smart tutor for kids in Arabic and English",
+          "description": "Al Muallim answers children's questions simply, by voice and on screen.",
+          "examplePhrases": [
+            "Alexa, open al muallim",
+            "why is the sky blue",
+            "quiz me on science"
+          ],
+          "keywords": [
+            "education",
+            "kids"
+          ]
+        }
+      },
+      "isAvailableWorldwide": true,
+      "category": "EDUCATION_AND_REFERENCE",
+      "testingInstructions": "Private family skill; not for publication."
+    },
+    "apis": {
+      "custom": {
+        "interfaces": [
+          {
+            "type": "ALEXA_PRESENTATION_APL"
+          }
+        ]
+      }
+    },
+    "privacyAndCompliance": {
+      "allowsPurchases": false,
+      "usesPersonalInfo": false,
+      "isChildDirected": false,
+      "isExportCompliant": true,
+      "containsAds": false
+    }
+  }
+}

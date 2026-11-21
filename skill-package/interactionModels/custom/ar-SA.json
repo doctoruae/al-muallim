@@ -1,0 +1,594 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "المعلم",
+      "intents": [
+        {
+          "name": "AskWhyIntent",
+          "slots": [
+            {
+              "name": "query",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "ليش {query}",
+            "لماذا {query}",
+            "ليه {query}",
+            "شحقه {query}"
+          ]
+        },
+        {
+          "name": "AskWhatIntent",
+          "slots": [
+            {
+              "name": "query",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "شو {query}",
+            "شنو {query}",
+            "ايش {query}",
+            "ما هو {query}",
+            "ما هي {query}",
+            "ماذا {query}",
+            "شو يعني {query}",
+            "ما معنى {query}",
+            "شو هو {query}",
+            "شو هي {query}"
+          ]
+        },
+        {
+          "name": "AskHowIntent",
+          "slots": [
+            {
+              "name": "query",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "كيف {query}",
+            "شلون {query}",
+            "كيف أقدر {query}"
+          ]
+        },
+        {
+          "name": "AskWhenIntent",
+          "slots": [
+            {
+              "name": "query",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "متى {query}"
+          ]
+        },
+        {
+          "name": "AskWhereIntent",
+          "slots": [
+            {
+              "name": "query",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "وين {query}",
+            "أين {query}",
+            "اين {query}"
+          ]
+        },
+        {
+          "name": "AskWhoIntent",
+          "slots": [
+            {
+              "name": "query",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "منو {query}",
+            "من هو {query}",
+            "من هي {query}",
+            "من الذي {query}"
+          ]
+        },
+        {
+          "name": "AskHowManyIntent",
+          "slots": [
+            {
+              "name": "query",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "كم {query}",
+            "جم {query}"
+          ]
+        },
+        {
+          "name": "AskIsIntent",
+          "slots": [
+            {
+              "name": "query",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "هل {query}"
+          ]
+        },
+        {
+          "name": "ExplainIntent",
+          "slots": [
+            {
+              "name": "query",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "اشرح لي {query}",
+            "اشرح {query}",
+            "علمني {query}",
+            "خبرني عن {query}",
+            "قول لي عن {query}",
+            "كلمني عن {query}",
+            "أبا أعرف عن {query}",
+            "ابا اعرف {query}",
+            "أبغي أعرف {query}",
+            "أريد أن أعرف {query}",
+            "عندي سؤال {query}",
+            "ساعدني في {query}"
+          ]
+        },
+        {
+          "name": "SolveIntent",
+          "slots": [
+            {
+              "name": "query",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "احسب {query}",
+            "حل {query}",
+            "حل لي {query}"
+          ]
+        },
+        {
+          "name": "TranslateIntent",
+          "slots": [
+            {
+              "name": "query",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "ترجم {query}",
+            "ترجم لي {query}"
+          ]
+        },
+        {
+          "name": "QuizIntent",
+          "slots": [
+            {
+              "name": "subject",
+              "type": "SUBJECT"
+            }
+          ],
+          "samples": [
+            "اختبرني",
+            "اختبرني في {subject}",
+            "سو لي اختبار",
+            "سو لي اختبار في {subject}",
+            "أبا مسابقة",
+            "أبا مسابقة في {subject}",
+            "أريد مسابقة",
+            "سؤال مسابقة",
+            "سؤال ثاني",
+            "اسألني سؤال",
+            "اسألني عن {subject}"
+          ]
+        },
+        {
+          "name": "AnswerIntent",
+          "slots": [
+            {
+              "name": "option",
+              "type": "OPTION"
+            }
+          ],
+          "samples": [
+            "{option}",
+            "الجواب {option}",
+            "الإجابة {option}",
+            "أختار {option}",
+            "رقم {option}",
+            "الخيار {option}"
+          ]
+        },
+        {
+          "name": "SimplerIntent",
+          "slots": [],
+          "samples": [
+            "ما فهمت",
+            "مب فاهم",
+            "مب فاهمة",
+            "لم أفهم",
+            "بسطها",
+            "اشرحها أسهل",
+            "عيدها بطريقة أسهل",
+            "صعبة علي"
+          ]
+        },
+        {
+          "name": "MoreIntent",
+          "slots": [],
+          "samples": [
+            "زيدني",
+            "خبرني أكثر",
+            "كمل",
+            "أبا أعرف أكثر",
+            "المزيد",
+            "وبعدين"
+          ]
+        },
+        {
+          "name": "ExampleIntent",
+          "slots": [],
+          "samples": [
+            "عطني مثال",
+            "أعطني مثالاً",
+            "مثال",
+            "مثال ثاني"
+          ]
+        },
+        {
+          "name": "DialectIntent",
+          "slots": [
+            {
+              "name": "style",
+              "type": "STYLE"
+            }
+          ],
+          "samples": [
+            "تكلم {style}",
+            "رمس {style}",
+            "احكي {style}",
+            "غير اللهجة إلى {style}",
+            "أبا {style}"
+          ]
+        },
+        {
+          "name": "GradeIntent",
+          "slots": [
+            {
+              "name": "grade",
+              "type": "GRADE"
+            }
+          ],
+          "samples": [
+            "أنا في الصف {grade}",
+            "أنا صف {grade}",
+            "صفي {grade}",
+            "أنا في {grade}",
+            "أدرس في الصف {grade}"
+          ]
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.RepeatIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        }
+      ],
+      "types": [
+        {
+          "name": "SUBJECT",
+          "values": [
+            {
+              "id": "math",
+              "name": {
+                "value": "الرياضيات",
+                "synonyms": [
+                  "رياضيات",
+                  "الحساب",
+                  "الجمع",
+                  "الضرب"
+                ]
+              }
+            },
+            {
+              "id": "science",
+              "name": {
+                "value": "العلوم",
+                "synonyms": [
+                  "علوم"
+                ]
+              }
+            },
+            {
+              "id": "arabic",
+              "name": {
+                "value": "اللغة العربية",
+                "synonyms": [
+                  "العربي",
+                  "عربي"
+                ]
+              }
+            },
+            {
+              "id": "english",
+              "name": {
+                "value": "اللغة الإنجليزية",
+                "synonyms": [
+                  "الإنجليزي",
+                  "انجليزي",
+                  "الانجليزي"
+                ]
+              }
+            },
+            {
+              "id": "space",
+              "name": {
+                "value": "الفضاء",
+                "synonyms": [
+                  "الكواكب"
+                ]
+              }
+            },
+            {
+              "id": "animals",
+              "name": {
+                "value": "الحيوانات",
+                "synonyms": [
+                  "حيوانات"
+                ]
+              }
+            },
+            {
+              "id": "uae",
+              "name": {
+                "value": "الإمارات",
+                "synonyms": [
+                  "تاريخ الإمارات",
+                  "الدراسات الاجتماعية"
+                ]
+              }
+            },
+            {
+              "id": "general",
+              "name": {
+                "value": "معلومات عامة",
+                "synonyms": [
+                  "أي شي"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "OPTION",
+          "values": [
+            {
+              "id": "1",
+              "name": {
+                "value": "الأول",
+                "synonyms": [
+                  "الاول",
+                  "واحد",
+                  "الأولى",
+                  "أول واحد"
+                ]
+              }
+            },
+            {
+              "id": "2",
+              "name": {
+                "value": "الثاني",
+                "synonyms": [
+                  "اثنين",
+                  "الثانية",
+                  "ثاني واحد"
+                ]
+              }
+            },
+            {
+              "id": "3",
+              "name": {
+                "value": "الثالث",
+                "synonyms": [
+                  "ثلاثة",
+                  "الثالثة",
+                  "ثالث واحد",
+                  "الأخير"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "STYLE",
+          "values": [
+            {
+              "id": "emirati",
+              "name": {
+                "value": "إماراتي",
+                "synonyms": [
+                  "بالإماراتي",
+                  "باللهجة الإماراتية",
+                  "عامية",
+                  "بالعامية"
+                ]
+              }
+            },
+            {
+              "id": "fusha",
+              "name": {
+                "value": "فصحى",
+                "synonyms": [
+                  "بالفصحى",
+                  "باللغة الفصحى",
+                  "بالعربية الفصحى"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "GRADE",
+          "values": [
+            {
+              "id": "0",
+              "name": {
+                "value": "الروضة",
+                "synonyms": [
+                  "روضة",
+                  "التمهيدي"
+                ]
+              }
+            },
+            {
+              "id": "1",
+              "name": {
+                "value": "الأول",
+                "synonyms": [
+                  "الاول",
+                  "أول",
+                  "واحد"
+                ]
+              }
+            },
+            {
+              "id": "2",
+              "name": {
+                "value": "الثاني",
+                "synonyms": [
+                  "ثاني",
+                  "اثنين"
+                ]
+              }
+            },
+            {
+              "id": "3",
+              "name": {
+                "value": "الثالث",
+                "synonyms": [
+                  "ثالث",
+                  "ثلاثة"
+                ]
+              }
+            },
+            {
+              "id": "4",
+              "name": {
+                "value": "الرابع",
+                "synonyms": [
+                  "رابع",
+                  "أربعة"
+                ]
+              }
+            },
+            {
+              "id": "5",
+              "name": {
+                "value": "الخامس",
+                "synonyms": [
+                  "خامس",
+                  "خمسة"
+                ]
+              }
+            },
+            {
+              "id": "6",
+              "name": {
+                "value": "السادس",
+                "synonyms": [
+                  "سادس",
+                  "ستة"
+                ]
+              }
+            },
+            {
+              "id": "7",
+              "name": {
+                "value": "السابع",
+                "synonyms": [
+                  "سابع",
+                  "سبعة"
+                ]
+              }
+            },
+            {
+              "id": "8",
+              "name": {
+                "value": "الثامن",
+                "synonyms": [
+                  "ثامن",
+                  "ثمانية"
+                ]
+              }
+            },
+            {
+              "id": "9",
+              "name": {
+                "value": "التاسع",
+                "synonyms": [
+                  "تاسع",
+                  "تسعة"
+                ]
+              }
+            },
+            {
+              "id": "10",
+              "name": {
+                "value": "العاشر",
+                "synonyms": [
+                  "عاشر",
+                  "عشرة"
+                ]
+              }
+            },
+            {
+              "id": "11",
+              "name": {
+                "value": "الحادي عشر",
+                "synonyms": [
+                  "أحد عشر"
+                ]
+              }
+            },
+            {
+              "id": "12",
+              "name": {
+                "value": "الثاني عشر",
+                "synonyms": [
+                  "اثنا عشر"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
